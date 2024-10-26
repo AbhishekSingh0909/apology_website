@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Special Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Password protection -->
+    <script>
+        let password = prompt("Please enter the password:");
+        if (password !== "Momo04012005") {
+            alert("Access Denied");
+            window.location.href = "https://www.google.com"; // Redirect to a safe page
+        }
+    </script>
+
+    <!-- Welcome Popup -->
+    <div id="welcome-popup" class="popup">
+        <h2>Welcome, Momo!</h2>
+        <p>This site was created just for you! Complete the three levels to unlock a special message. 🥰</p>
+        <button onclick="closePopup()">Start Level 1</button>
+    </div>
+
+    <!-- Main Menu (to navigate to Level 1) -->
+    <div id="main-menu" style="display: none;">
+        <h1>Get Ready for Level 1!</h1>
+        <button onclick="startLevel1()">Start Level 1</button>
+    </div>
+
+    <!-- JavaScript and Style -->
+    <script src="script.js"></script>
+    <script>
+        // Function to close the welcome popup and show the main menu
+        function closePopup() {
+            document.getElementById('welcome-popup').style.display = 'none';
+            document.getElementById('main-menu').style.display = 'block';
+        }
+
+        // Function to navigate to Level 1
+        function startLevel1() {
+            window.location.href = 'scramble.html';
+        }
+    </script>
+</body>
+</html>

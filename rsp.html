@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors - Best of 5</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-color: #f2f2f2;
+        }
+        h1 {
+            color: #333;
+        }
+        .buttons, #tryAgain {
+            margin: 20px;
+        }
+        .buttons button, #tryAgain button {
+            cursor: pointer;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+        }
+        .buttons button.rock { background-color: #4CAF50; }
+        .buttons button.paper { background-color: #2196F3; }
+        .buttons button.scissors { background-color: #f44336; }
+        #tryAgain button {
+            background-color: #555;
+        }
+        #result, #score {
+            margin: 15px;
+            font-size: 20px;
+            color: #555;
+        }
+        #finalResult {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Rock Paper Scissors - Best of 5</h1>
+    
+    <div class="buttons">
+        <button class="rock" onclick="playRound('rock')">Rock</button>
+        <button class="paper" onclick="playRound('paper')">Paper</button>
+        <button class="scissors" onclick="playRound('scissors')">Scissors</button>
+    </div>
+
+    <div id="result">Make your choice!</div>
+    <div id="score">You: 0 | Me: 0</div>
+    <div id="finalResult"></div>
+
+    <div id="tryAgain" style="display: none;">
+        <button onclick="resetGame()">Try Again</button>
+    </div>
+
+    <script>
+        let playerScore = 0;
+        let computerScore = 0;
+        const roundsToWin = 5;
+        const choices = ["rock", "paper", "scissors"];
+
+        function playRound(playerChoice) {
+            if (playerScore >= roundsToWin || computerScore >= roundsToWin) return; // Stop if the game is over
+
+            const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+            let roundResult = "";
+
+            if (playerChoice === computerChoice) {
+                roundResult = `It's a draw! Both chose ${playerChoice}.`;
+            } else if (
+                (playerChoice === "rock" && computerChoice === "scissors") ||
+                (playerChoice === "scissors" && computerChoice === "paper") ||
+                (playerChoice === "paper" && computerChoice === "rock")
+            ) {
+                playerScore++;
+                roundResult = `You win this round! ${playerChoice} beats ${computerChoice}.`;
+            } else {
+                computerScore++;
+                roundResult = `I win this round! ${computerChoice} beats ${playerChoice}.`;
+            }
+
+            // Update result and score
+            document.getElementById("result").innerText = roundResult;
+            document.getElementById("score").innerText = `You: ${playerScore} | Me: ${computerScore}`;
+
+            // Check if someone has won best of 5
+            if (playerScore === roundsToWin) {
+                document.getElementById("finalResult").innerText = "Congratulations! You won the game 🎉";
+                setTimeout(() => {
+                    window.location.href = "apology_letter.html"; // Redirect to apology_letter.html
+                }, 2000); // Redirect after 2 seconds
+            } else if (computerScore === roundsToWin) {
+                document.getElementById("finalResult").innerText = "Game over! I win 😁";
+                document.getElementById("tryAgain").style.display = "block";
+            }
+        }
+
+        function resetGame() {
+            playerScore = 0;
+            computerScore = 0;
+            document.getElementById("result").innerText = "Make your choice!";
+            document.getElementById("score").innerText = `You: 0 | Me: 0`;
+            document.getElementById("finalResult").innerText = "";
+            document.getElementById("tryAgain").style.display = "none";
+        }
+    </script>
+</body>
+</html>
+

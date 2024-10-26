@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Scramble Game</title>
+    <link href="scramble.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="root">
+        <h1 class="title">Word Scramble Game</h1>
+        <div id="scrambled">
+            <h2 id="scrambleWord">Word</h2>
+            <p id="hint"></p>
+        </div>
+        <div id="form">
+            <input id="input" type="text" placeholder="Guess the correct word" />
+        </div>
+        <h3 id="output">Result:</h3>
+        <div class="foot">
+            <button type="button" onclick="check()">Check</button>
+            <button type="button" onclick="refresh()">Refresh</button>
+        </div>
+
+        <!-- Completion message, hidden initially -->
+        <div id="completion-message" style="display: none;">
+            <h2>Congratulations! 🎉</h2>
+            <p>You have successfully completed Level 1!</p>
+            <button onclick="goToNextLevel()">Continue to Level 2</button>
+        </div>
+    </div>
+
+    <script src="scramble.js"></script>
+</body>
+</html>

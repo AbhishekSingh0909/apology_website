@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whack-My-Butt Game - Level 3</title>
+    <link rel="stylesheet" href="whack.css">
+</head>
+<body>
+    <h1>🍑 Whack-My-Butt Game 🍑</h1>
+    <div class="game-area" id="game-area">
+        <div class="hole" onclick="whack(event)" id="hole1"></div>
+        <div class="hole" onclick="whack(event)" id="hole2"></div>
+        <div class="hole" onclick="whack(event)" id="hole3"></div>
+        <div class="hole" onclick="whack(event)" id="hole4"></div>
+        <div class="hole" onclick="whack(event)" id="hole5"></div>
+        <div class="hole" onclick="whack(event)" id="hole6"></div>
+        <div class="hole" onclick="whack(event)" id="hole7"></div>
+        <div class="hole" onclick="whack(event)" id="hole8"></div>
+        <div class="hole" onclick="whack(event)" id="hole9"></div>
+    </div>
+    <div id="score">Score: 0</div> <!-- Updated to reflect Score instead of Coins -->
+    <div id="countdown"></div>
+    <div id="game-over">Game Over!</div>
+    <button class="startBtn glow-on-hover" onclick="startGame()">Start Game</button>
+    <script src="whack.js"></script>
+</body>
+</html>
+
+
+
+
